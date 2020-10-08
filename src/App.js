@@ -1,21 +1,23 @@
 import React from 'react';
-import logo from './logo.svg';
+import ReactDOM from 'react-dom';
+import Setlist from './Setlist.js';
 import './App.css';
+
+function displaySets() {
+  const element = <Setlist></Setlist>
+  ReactDOM.render(element, document.getElementById('App-content'));
+}
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <button value="Display Sets"
+          onClick={displaySets}
+        >Display Sets</button>
       </header>
+      <div id="App-content" className="App-content">
+      </div>
     </div>
   );
 }
