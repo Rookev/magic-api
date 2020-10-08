@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/magic-api/static/css/main.5f361e03.chunk.css",
-    "main.js": "/magic-api/static/js/main.a45dbf2b.chunk.js",
-    "main.js.map": "/magic-api/static/js/main.a45dbf2b.chunk.js.map",
+    "main.js": "/magic-api/static/js/main.46637203.chunk.js",
+    "main.js.map": "/magic-api/static/js/main.46637203.chunk.js.map",
     "runtime-main.js": "/magic-api/static/js/runtime-main.37142ccc.js",
     "runtime-main.js.map": "/magic-api/static/js/runtime-main.37142ccc.js.map",
     "static/js/2.a8b38b45.chunk.js": "/magic-api/static/js/2.a8b38b45.chunk.js",
     "static/js/2.a8b38b45.chunk.js.map": "/magic-api/static/js/2.a8b38b45.chunk.js.map",
     "index.html": "/magic-api/index.html",
-    "precache-manifest.f9d23ef83c5ec1f04f5aee7407487e02.js": "/magic-api/precache-manifest.f9d23ef83c5ec1f04f5aee7407487e02.js",
+    "precache-manifest.2e785c0e171e7f7e12524d809dfe4e96.js": "/magic-api/precache-manifest.2e785c0e171e7f7e12524d809dfe4e96.js",
     "service-worker.js": "/magic-api/service-worker.js",
     "static/css/main.5f361e03.chunk.css.map": "/magic-api/static/css/main.5f361e03.chunk.css.map",
     "static/js/2.a8b38b45.chunk.js.LICENSE.txt": "/magic-api/static/js/2.a8b38b45.chunk.js.LICENSE.txt",
@@ -18,6 +18,6 @@
     "static/js/runtime-main.37142ccc.js",
     "static/js/2.a8b38b45.chunk.js",
     "static/css/main.5f361e03.chunk.css",
-    "static/js/main.a45dbf2b.chunk.js"
+    "static/js/main.46637203.chunk.js"
   ]
 }
