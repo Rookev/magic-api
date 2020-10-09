@@ -30,13 +30,31 @@ class Setlist extends Component {
   }
 
   buildSetlist() {
-    var elements = this.state.items;
+    var aSets = this.state.items;
+    var aSetsToExclude = ["Tokens", "Promos", "Oversized"];
+
+    var aBasicSets = aSets.filter(function (oSet) {
+      var bIncludeSet = true;
+      // Check if set name contains one of the excluded strings
+      aSetsToExclude.forEach(sSetToExclude => {
+        // If yes -> remove
+        if (oSet.name.includes(sSetToExclude)) {
+          bIncludeSet = false;
+        }
+      });
+
+      return bIncludeSet;
+    });
+
     return (
-      <ul>
-        {elements.map((value, index) => {
-          return <li key={value.code}><img src={value.icon_svg_uri} alt={value.code} width={20} height={20} /><span>{" " + value.name}</span></li>
-        })}
-      </ul>
+      <div>
+        <h1>Found Sets: {aBasicSets.length}</h1>
+        <ul>
+          {aBasicSets.map((oSet) => {
+            return <li key={oSet.code}><img src={oSet.icon_svg_uri} alt={oSet.code} width={20} height={20} /><span>{" " + oSet.name}</span></li>
+          })}
+        </ul>
+      </div>
     );
   }
 
