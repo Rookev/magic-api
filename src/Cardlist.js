@@ -9,7 +9,7 @@ class Cardlist extends Component {
       this.state = {
         isLoaded: true,
         set: props.set,
-        cards: "123"
+        cards: undefined
       };
     }
 
@@ -22,13 +22,53 @@ class Cardlist extends Component {
     }
   }
 
+  loadCards(set) {
+    fetch("https://api.scryfall.com/cards/search?order=set&q=set:" + set)
+      .then(res => res.json())
+      .then((result) => {
+        this.setState({
+          isLoaded: true,
+          cards: result.data
+        });
+      },
+        (error) => {
+          this.setState({
+            isLoaded: true
+          });
+        })
+  }
+
   render() {
-    if (!this.state.isLoaded) {
-      return <h1>I am an unloaded Cardlist :-( (Set: {this.props.set})</h1>
+    if (!this.props.set) {
+      return <h1>I am an unloaded Cardlist :-(</h1>
     }
 
     else {
-      return <h1>I am a loaded Cardlist! :-) (Set: {this.props.set})</h1>
+      if (!this.state.cards) {
+        this.loadCards(this.props.set);
+        return <h1>I am a loaded Cardlist! :-) (Set: {this.props.set})</h1>
+      }
+
+      else {
+        var aCardsWithImageUris = this.state.cards.filter(function (oCard) {
+          return (oCard && oCard.image_uris && oCard.image_uris.normal)
+        });
+
+        return (
+          <div>
+            <h1>Found Cards with images: {aCardsWithImageUris.length}</h1>
+            <ul>
+              {aCardsWithImageUris.map((oCard) => {
+                return (
+                  <li key={oCard.id}>
+                    <img src={oCard.image_uris.normal} alt={oCard.name} />
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        );
+      }
     }
   }
 }
