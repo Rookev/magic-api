@@ -39,7 +39,13 @@ class Setlist extends Component {
           <h1>Found Sets: {this.state.sets.length}</h1>
           <ul>
             {this.state.sets.map((oSet) => {
-              return <li key={oSet.code}><img src={oSet.icon_svg_uri} alt={oSet.code} width={20} height={20} /><span>{" " + oSet.name}</span></li>
+              return (
+                <li key={oSet.code}>
+                  <button>
+                    <img src={oSet.icon_svg_uri} alt={oSet.code} width={20} height={20} />
+                    <span>{" " + oSet.name}</span>
+                  </button>
+                </li>);
             })}
           </ul>
         </div>
