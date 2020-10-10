@@ -8,6 +8,7 @@ class Setlist extends Component {
       isLoaded: false,
       sets: undefined
     };
+    this.onSetClicked = props.onSetClicked;
     this.loadSets();
   }
 
@@ -28,10 +29,6 @@ class Setlist extends Component {
         })
   }
 
-  displayCards(code, event) {
-    console.log(code);
-  }
-
   render() {
     if (!this.state.isLoaded) {
       return <h1>I am an unloaded Setlist! :-(</h1>
@@ -45,7 +42,7 @@ class Setlist extends Component {
             {this.state.sets.map((oSet) => {
               return (
                 <li key={oSet.code}>
-                  <button onClick={this.displayCards.bind(this, oSet.code)}>
+                  <button onClick={this.onSetClicked.bind(this, oSet.code)}>
                     <img src={oSet.icon_svg_uri} alt={oSet.code} width={20} height={20} />
                     <span>{" " + oSet.name}</span>
                   </button>
