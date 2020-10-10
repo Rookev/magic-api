@@ -15,12 +15,12 @@ class Setlist extends Component {
     fetch("https://api.scryfall.com/sets")
       .then(res => res.json())
       .then((result) => {
-          cardAPI.Sets = result.data;
-          this.setState({
-            isLoaded: true,
-            sets: cardAPI.Sets
-          });
-        },
+        cardAPI.Sets = result.data;
+        this.setState({
+          isLoaded: true,
+          sets: cardAPI.Sets
+        });
+      },
         (error) => {
           this.setState({
             isLoaded: true
@@ -33,7 +33,7 @@ class Setlist extends Component {
       return <h1>I am an unloaded Setlist! :-(</h1>
     }
 
-    else {    
+    else {
       return (
         <div>
           <h1>Found Sets: {this.state.sets.length}</h1>

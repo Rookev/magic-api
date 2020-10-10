@@ -18,8 +18,8 @@ function App() {
         >Display Sets</button>
       </header>
       <div id="App-content" className="App-content">
-      <div id="App-sets" className="App-sets"></div>
-      <div id="App-cards" className="App-cards"></div>
+        <div id="App-sets" className="App-sets"></div>
+        <div id="App-cards" className="App-cards"></div>
       </div>
     </div>
   );
