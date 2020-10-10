@@ -1,6 +1,6 @@
 class CardAPI {
   constructor() {
-    this.sets = [];
+    this.sets = undefined;
   }
 
   set Sets(newSet) {
