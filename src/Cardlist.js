@@ -1,25 +1,11 @@
 import React, { Component } from 'react';
-import cardAPI from './CardAPI.js'
 
 class Cardlist extends Component {
   constructor(props) {
     super(props);
-    var isSetProvided = props.set !== undefined;
-    if (isSetProvided) {
-      this.state = {
-        isLoaded: true,
-        set: props.set,
-        cards: undefined
-      };
-    }
-
-    else {
-      this.state = {
-        isLoaded: false,
-        set: props.set,
-        cards: undefined
-      };
-    }
+    this.state = {
+      cards: undefined
+    };
   }
 
   loadCards(set) {
@@ -27,36 +13,52 @@ class Cardlist extends Component {
       .then(res => res.json())
       .then((result) => {
         this.setState({
-          isLoaded: true,
           cards: result.data
         });
       },
         (error) => {
-          this.setState({
-            isLoaded: true
-          });
         })
   }
 
-  render() {
-    if (!this.props.set) {
-      return <h1>I am an unloaded Cardlist :-(</h1>
+  shouldComponentUpdate(nextProps, nextState) {
+    if (nextProps.set !== this.props.set) {
+      return true;
     }
 
+    if (nextState.cards === undefined) {
+      return false;
+    }
+
+    return true;
+  }
+
+  render() {
+    // Initial rendering without set
+    if (!this.props.set) {
+      return <h1>I am an unloaded Cardlist :-(</h1>;
+    }
+
+    // A set prop has been specified
     else {
+      // Not yet loaded -> Start async load (function loadCards) and return loading message
       if (!this.state.cards) {
         this.loadCards(this.props.set);
-        return <h1>I am a loaded Cardlist! :-) (Set: {this.props.set})</h1>
+        return <h1>Loading Set: {this.props.set}...</h1>;
       }
 
+      // Loaded
       else {
         var aCardsWithImageUris = this.state.cards.filter(function (oCard) {
           return (oCard && oCard.image_uris && oCard.image_uris.normal)
         });
 
+        this.setState({
+          cards: undefined
+        });
+
         return (
           <div>
-            <h1>Found Cards with images: {aCardsWithImageUris.length}</h1>
+            <h1>Set {this.props.set}: {aCardsWithImageUris.length} cards</h1>
             <ul>
               {aCardsWithImageUris.map((oCard) => {
                 return (
