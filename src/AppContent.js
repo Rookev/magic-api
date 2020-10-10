@@ -3,10 +3,6 @@ import Setlist from './Setlist.js';
 import Cardlist from './Cardlist.js';
 
 class AppContent extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <div id="App-content" className="App-content">

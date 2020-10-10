@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import AppContent from './AppContent.js';
 import './App.css';
 
-function displaySets() {
+function displayAppContent() {
   const appContent = <AppContent></AppContent>;
   ReactDOM.render(appContent, document.getElementById('App-content'));
 }
