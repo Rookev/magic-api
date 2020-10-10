@@ -1,12 +1,10 @@
 class CardAPI {
   constructor() {
     this.sets = [];
-    this.setsAreLoaded = false;
   }
 
   set Sets(newSet) {
     this.sets = this.buildSetlist(newSet);
-    this.setsAreLoaded = true;
   }
 
   get Sets() {
