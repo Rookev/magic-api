@@ -12,6 +12,19 @@
 }
 
 .App-content {
+  height: 100%;
+}
+
+.App-sets {
+  float: left;
+  background-color: gold;
+  width: 20%;
+}
+
+.App-cards {
+  float: right;
+  background-color: lightblue;
+  width: 80%;
 }
 
 .App-link {
