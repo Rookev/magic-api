@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import cardAPI from './CardAPI.js'
 
 class Setlist extends Component {
   constructor(props) {
     super(props);
     this.state = {
       isLoaded: false,
-      items: undefined
+      sets: undefined
     };
     this.loadSets();
   }
@@ -13,49 +14,18 @@ class Setlist extends Component {
   loadSets() {
     fetch("https://api.scryfall.com/sets")
       .then(res => res.json())
-      .then(
-        (result) => {
+      .then((result) => {
+          cardAPI.Sets = result.data;
           this.setState({
             isLoaded: true,
-            items: result.data
+            sets: cardAPI.Sets
           });
         },
         (error) => {
           this.setState({
-            isLoaded: true,
-            error
+            isLoaded: true
           });
-        }
-      )
-  }
-
-  buildSetlist() {
-    var aSets = this.state.items;
-    var aSetsToExclude = ["Tokens", "Promos", "Oversized"];
-
-    var aBasicSets = aSets.filter(function (oSet) {
-      var bIncludeSet = true;
-      // Check if set name contains one of the excluded strings
-      aSetsToExclude.forEach(sSetToExclude => {
-        // If yes -> remove
-        if (oSet.name.includes(sSetToExclude)) {
-          bIncludeSet = false;
-        }
-      });
-
-      return bIncludeSet;
-    });
-
-    return (
-      <div>
-        <h1>Found Sets: {aBasicSets.length}</h1>
-        <ul>
-          {aBasicSets.map((oSet) => {
-            return <li key={oSet.code}><img src={oSet.icon_svg_uri} alt={oSet.code} width={20} height={20} /><span>{" " + oSet.name}</span></li>
-          })}
-        </ul>
-      </div>
-    );
+        })
   }
 
   render() {
@@ -63,9 +33,17 @@ class Setlist extends Component {
       return <h1>I am an unloaded Setlist! :-(</h1>
     }
 
-    else {
-      var setlist = this.buildSetlist();
-      return setlist;
+    else {    
+      return (
+        <div>
+          <h1>Found Sets: {this.state.sets.length}</h1>
+          <ul>
+            {this.state.sets.map((oSet) => {
+              return <li key={oSet.code}><img src={oSet.icon_svg_uri} alt={oSet.code} width={20} height={20} /><span>{" " + oSet.name}</span></li>
+            })}
+          </ul>
+        </div>
+      );
     }
   }
 }
