@@ -30,3 +30,7 @@
 .App-link {
   color: #61dafb;
 }
+
+.Card {
+  display: inline;
+}
