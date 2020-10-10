@@ -1,12 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Setlist from './Setlist.js';
+import Cardlist from './Cardlist.js';
 import './App.css';
 
 function displaySets() {
-  const element = <Setlist></Setlist>
-  ReactDOM.render(element, document.getElementById('App-sets'));
-  ReactDOM.render(element, document.getElementById('App-cards'));
+  const setlist = <Setlist></Setlist>
+  ReactDOM.render(setlist, document.getElementById('App-sets'));
+
+  const cardlist = <Cardlist></Cardlist>
+  ReactDOM.render(cardlist, document.getElementById('App-cards'));
 }
 
 function App() {
