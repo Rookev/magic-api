@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import Setlist from './Setlist.js';
 import Cardlist from './Cardlist.js';
 
 class AppContent extends Component {
   handleSetClicked(code, event) {
     console.log("AppContent: Set clicked!");
+
+    var cardlist = <Cardlist set={code}></Cardlist>;
+    ReactDOM.render(cardlist, document.getElementById("App-cards"));
   }
 
   render() {
@@ -15,7 +19,7 @@ class AppContent extends Component {
         </div>
 
         <div id="App-cards" className="App-cards">
-          <Cardlist></Cardlist>
+
         </div>
       </div>
     );
