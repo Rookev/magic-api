@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 class Setlist extends Component {
+
   constructor(props) {
     super(props);
     this.state = {
