@@ -62,7 +62,7 @@ class Cardlist extends Component {
             <ul>
               {aCardsWithImageUris.map((oCard) => {
                 return (
-                  <li key={oCard.id} class="Card">
+                  <li key={oCard.id} className="Card">
                     <img src={oCard.image_uris.normal} alt={oCard.name} />
                   </li>
                 );
