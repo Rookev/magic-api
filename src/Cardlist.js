@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import GridList from '@material-ui/core/GridList';
-import GridListTile from '@material-ui/core/GridListTile';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
@@ -50,7 +48,6 @@ class Cardlist extends Component {
           <Typography variant="h2">
           Set {this.props.set}: {this.state.cards[this.props.set].length} cards
           </Typography>
-          <h1></h1>
           <Grid container spacing={1}>
             {this.state.cards[this.props.set].map((oCard) => (
               <Grid item xs={3}>
