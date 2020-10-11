@@ -23,7 +23,7 @@ function App() {
           <Toolbar>
             <Button variant="contained" color="primary" onClick={displayAppContent}>
               Display Sets
-        </Button>
+            </Button>
           </Toolbar>
         </AppBar>
 
