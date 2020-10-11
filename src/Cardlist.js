@@ -33,12 +33,14 @@ class Cardlist extends Component {
   render() {
     // No buffered cards found -> Start async load (function loadCards) and return loading message
     if (!this.state.cards[this.props.set]) {
+      console.log("Fetch set from network: " + this.props.set);
       this.loadCards(this.props.set);
       return <h1>Loading Set: {this.props.set}...</h1>;
     }
 
     // Loaded
     else {
+      console.log("Render set from buffer: " + this.props.set);
       return (
         <div>
           <h1>Set {this.props.set}: {this.state.cards[this.props.set].length} cards</h1>
