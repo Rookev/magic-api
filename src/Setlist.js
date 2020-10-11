@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import cardAPI from './CardAPI.js'
 
 class Setlist extends Component {
   constructor(props) {
@@ -16,17 +15,33 @@ class Setlist extends Component {
     fetch("https://api.scryfall.com/sets")
       .then(res => res.json())
       .then((result) => {
-        cardAPI.Sets = result.data;
+        var aSets = this.buildSetlist(result.data);
         this.setState({
           isLoaded: true,
-          sets: cardAPI.Sets
+          sets: aSets
         });
       },
         (error) => {
-          this.setState({
-            isLoaded: true
-          });
         })
+  }
+
+  buildSetlist(aFetchedSets) {
+    var aSetsToExclude = ["Tokens", "Promos", "Oversized"];
+
+    var aBasicSets = aFetchedSets.filter(function (oSet) {
+      var bIncludeSet = true;
+      // Check if set name contains one of the excluded strings
+      aSetsToExclude.forEach(sSetToExclude => {
+        // If yes -> remove
+        if (oSet.name.includes(sSetToExclude)) {
+          bIncludeSet = false;
+        }
+      });
+
+      return bIncludeSet;
+    });
+
+    return aBasicSets;
   }
 
   render() {
