@@ -9,7 +9,7 @@ import Setlist from './Setlist.js';
 import Cardlist from './Cardlist.js';
 import Grid from '@material-ui/core/Grid';
 
-function displaySets() {
+function loadSets() {
   const setlist = <Setlist onSetClicked={handleSetClicked}></Setlist>
   ReactDOM.render(setlist, document.getElementById('App-sets'));
 }
@@ -30,8 +30,8 @@ function App() {
 
           <AppBar position="sticky" color="default">
             <Toolbar>
-              <Button variant="contained" onClick={displaySets}>
-                Display Sets
+              <Button variant="contained" onClick={loadSets}>
+                Load Sets
             </Button>
               <div id="App-sets" className="App-sets"></div>
             </Toolbar>
