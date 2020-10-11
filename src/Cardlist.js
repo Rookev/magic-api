@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import GridList from '@material-ui/core/GridList';
+import GridListTile from '@material-ui/core/GridListTile';
+import Grid from '@material-ui/core/Grid';
 
 class Cardlist extends Component {
 
@@ -44,15 +47,13 @@ class Cardlist extends Component {
       return (
         <div>
           <h1>Set {this.props.set}: {this.state.cards[this.props.set].length} cards</h1>
-          <ul>
-            {this.state.cards[this.props.set].map((oCard) => {
-              return (
-                <li key={oCard.id} className="Card">
-                  <img src={oCard.image_uris.normal} alt={oCard.name} />
-                </li>
-              );
-            })}
-          </ul>
+          <Grid container spacing={1}>
+            {this.state.cards[this.props.set].map((oCard) => (
+              <Grid item xs={3}>
+                <img className="Img-card" src={oCard.image_uris.normal} alt={oCard.name} />
+              </Grid>
+            ))}
+          </Grid>
         </div>
       );
     }

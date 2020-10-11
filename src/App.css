@@ -27,6 +27,7 @@
   color: #61dafb;
 }
 
-.Card {
-  display: inline;
+.Img-card {
+  height: auto;
+  width: 100%;
 }
