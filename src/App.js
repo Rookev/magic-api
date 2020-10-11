@@ -26,33 +26,27 @@ function App() {
       <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
       <Container maxWidth="100%">
 
-        <AppBar position="static">
-          <Toolbar>
-            <Button variant="contained" onClick={displaySets}>
-              Display Sets
+        <Grid container direction="column" justify="flex-start" alignItems="stretch">
+
+          <AppBar position="sticky" color="default">
+            <Toolbar>
+              <Button variant="contained" onClick={displaySets}>
+                Display Sets
             </Button>
-            <div id="App-sets" className="App-sets"></div>
-          </Toolbar>
-        </AppBar>
+              <div id="App-sets" className="App-sets"></div>
+            </Toolbar>
+          </AppBar>
 
-        <div id="App-content" className="App-content">
-        <Grid
-          container
-          direction="row"
-          justify="center"
-          alignItems="flex-start"
-          spacing={3}
-        >
-
-
-          <Grid item xs={12}>
-            <div id="App-cards" className="App-cards">
-            </div>
-          </Grid>
-
+          <div id="App-content" className="App-content">
+            <Grid container direction="row" justify="center" alignItems="flex-start" spacing={3}>
+              <Grid item xs={12}>
+                <div id="App-cards" className="App-cards">
+                </div>
+              </Grid>
+            </Grid>
+          </div>
 
         </Grid>
-      </div>
 
       </Container>
     </div>
