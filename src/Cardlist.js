@@ -13,8 +13,17 @@ class Cardlist extends Component {
     fetch("https://api.scryfall.com/cards/search?order=set&q=set:" + set)
       .then(res => res.json())
       .then((result) => {
+        // Only consider cards with images
+        var aCardsWithImageUris = result.data.filter(function (oCard) {
+          return (oCard && oCard.image_uris && oCard.image_uris.normal)
+        });
+
+        // Read old card buffer
         var updatedCardBuffer = this.state.cards;
-        updatedCardBuffer[set] = result.data;
+
+        // Update card buffer with newly fetched cards
+        updatedCardBuffer[set] = aCardsWithImageUris;
+
         this.setState({
           cards: updatedCardBuffer
         });
@@ -30,15 +39,11 @@ class Cardlist extends Component {
 
     // Loaded
     else {
-      var aCardsWithImageUris = this.state.cards[this.props.set].filter(function (oCard) {
-        return (oCard && oCard.image_uris && oCard.image_uris.normal)
-      });
-
       return (
         <div>
-          <h1>Set {this.props.set}: {aCardsWithImageUris.length} cards</h1>
+          <h1>Set {this.props.set}: {this.state.cards[this.props.set].length} cards</h1>
           <ul>
-            {aCardsWithImageUris.map((oCard) => {
+            {this.state.cards[this.props.set].map((oCard) => {
               return (
                 <li key={oCard.id} className="Card">
                   <img src={oCard.image_uris.normal} alt={oCard.name} />
