@@ -16,15 +16,11 @@
 }
 
 .App-sets {
-  float: left;
-  background-color: gold;
-  width: 20%;
+  border:solid;
 }
 
 .App-cards {
-  float: right;
-  background-color: lightblue;
-  width: 80%;
+  border: solid;
 }
 
 .App-link {
