@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Typography from '@material-ui/core/Typography';
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
 
 class Setlist extends Component {
 
@@ -47,25 +48,18 @@ class Setlist extends Component {
 
   render() {
     if (!this.state.isLoaded) {
-      return <Typography variant="h2">I am an unloaded Setlist! :-(</Typography>
+      return <span>Loading...</span>
     }
 
     else {
       return (
-        <div>
-        <Typography variant="h2">Found Sets: {this.state.sets.length}</Typography>
-          <ul>
-            {this.state.sets.map((oSet) => {
-              return (
-                <li key={oSet.code}>
-                  <button onClick={this.props.onSetClicked.bind(this, oSet.code)}>
-                    <img src={oSet.icon_svg_uri} alt={oSet.code} width={20} height={20} />
-                    <span>{" " + oSet.name}</span>
-                  </button>
-                </li>);
-            })}
-          </ul>
-        </div>
+        <Select id="Set-select">
+          {this.state.sets.map((oSet) => {
+            return (
+              <MenuItem onClick={this.props.onSetClicked.bind(this, oSet.code)} value={oSet.code}>{oSet.name}</MenuItem>
+            );
+          })}
+        </Select>
       );
     }
   }
