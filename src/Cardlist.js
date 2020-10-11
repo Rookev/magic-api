@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
 
 class Cardlist extends Component {
 
@@ -38,7 +39,7 @@ class Cardlist extends Component {
     if (!this.state.cards[this.props.set]) {
       console.log("Fetch set from network: " + this.props.set);
       this.loadCards(this.props.set);
-      return <h1>Loading Set: {this.props.set}...</h1>;
+      return <Typography variant="h2">Loading Set: {this.props.set}...</Typography>;
     }
 
     // Loaded
@@ -46,7 +47,10 @@ class Cardlist extends Component {
       console.log("Render set from buffer: " + this.props.set);
       return (
         <div>
-          <h1>Set {this.props.set}: {this.state.cards[this.props.set].length} cards</h1>
+          <Typography variant="h2">
+          Set {this.props.set}: {this.state.cards[this.props.set].length} cards
+          </Typography>
+          <h1></h1>
           <Grid container spacing={1}>
             {this.state.cards[this.props.set].map((oCard) => (
               <Grid item xs={3}>

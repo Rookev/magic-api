@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Typography from '@material-ui/core/Typography';
 
 class Setlist extends Component {
 
@@ -46,13 +47,13 @@ class Setlist extends Component {
 
   render() {
     if (!this.state.isLoaded) {
-      return <h1>I am an unloaded Setlist! :-(</h1>
+      return <Typography variant="h2">I am an unloaded Setlist! :-(</Typography>
     }
 
     else {
       return (
         <div>
-          <h1>Found Sets: {this.state.sets.length}</h1>
+        <Typography variant="h2">Found Sets: {this.state.sets.length}</Typography>
           <ul>
             {this.state.sets.map((oSet) => {
               return (
