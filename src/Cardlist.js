@@ -48,9 +48,9 @@ class Cardlist extends Component {
           <Typography variant="h2">
           Set {this.props.set}: {this.state.cards[this.props.set].length} cards
           </Typography>
-          <Grid container spacing={1}>
+          <Grid container spacing={2}>
             {this.state.cards[this.props.set].map((oCard) => (
-              <Grid item xs={3}>
+              <Grid item xs={2}>
                 <img className="Img-card" src={oCard.image_uris.normal} alt={oCard.name} />
               </Grid>
             ))}
