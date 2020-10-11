@@ -37,7 +37,7 @@ class Cardlist extends Component {
     if (!this.state.cards[this.props.set]) {
       console.log("Fetch set from network: " + this.props.set);
       this.loadCards(this.props.set);
-      return <Typography variant="h2">Loading Set: {this.props.set}...</Typography>;
+      return <Typography variant="h4">Loading Set: {this.props.set}...</Typography>;
     }
 
     // Loaded
@@ -45,9 +45,6 @@ class Cardlist extends Component {
       console.log("Render set from buffer: " + this.props.set);
       return (
         <div>
-          <Typography variant="h2">
-          Set {this.props.set}: {this.state.cards[this.props.set].length} cards
-          </Typography>
           <Grid container spacing={2}>
             {this.state.cards[this.props.set].map((oCard) => (
               <Grid item xs={2}>
