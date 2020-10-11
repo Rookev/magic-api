@@ -28,7 +28,7 @@ function App() {
 
         <AppBar position="static">
           <Toolbar>
-            <Button variant="contained" color="primary" onClick={displaySets}>
+            <Button variant="contained" onClick={displaySets}>
               Display Sets
             </Button>
             <div id="App-sets" className="App-sets"></div>
