@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import AppContent from './AppContent.js';
 import './App.css';
 import Button from '@material-ui/core/Button';
+import Container from '@material-ui/core/Container';
 
 function displayAppContent() {
   const appContent = <AppContent></AppContent>;
@@ -14,12 +15,14 @@ function App() {
     <div className="App">
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
       <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+      <Container maxWidth="100%">
       <header className="App-header">
         <Button variant="contained" color="primary" onClick={displayAppContent}>
           Display Sets
         </Button>
       </header>
       <div id="App-content" className="App-content"></div>
+      </Container>
     </div>
   );
 }
