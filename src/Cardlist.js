@@ -77,7 +77,7 @@ class Cardlist extends Component {
         <div>
           <Grid container spacing={1}>
             {this.state.cards[this.props.set].map((oCard) => (
-              <Grid item xs={2}>
+              <Grid item xs={2} key={oCard.name}>
                 <img className="Img-card" src={oCard.image_uris.normal} alt={oCard.name} />
               </Grid>
             ))}
