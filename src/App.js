@@ -15,8 +15,11 @@ function loadSets() {
 }
 
 function handleSetClicked(code, event) {
-  var cardlist = <Cardlist set={code}></Cardlist>;
+  const cardlist = <Cardlist set={code}></Cardlist>;
   ReactDOM.render(cardlist, document.getElementById("App-cards"));
+
+  const setlist = <Setlist onSetClicked={handleSetClicked} value={code}></Setlist>
+  ReactDOM.render(setlist, document.getElementById('App-sets'));
 }
 
 function App() {
