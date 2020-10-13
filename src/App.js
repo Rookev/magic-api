@@ -12,6 +12,8 @@ import Grid from '@material-ui/core/Grid';
 function loadSets() {
   const setlist = <Setlist onSetClicked={handleSetClicked}></Setlist>
   ReactDOM.render(setlist, document.getElementById('App-sets'));
+
+  handleSetClicked("znr");
 }
 
 function handleSetClicked(code, event) {
