@@ -43,7 +43,7 @@ class Setlist extends Component {
       return bIncludeSet;
     });
 
-    aBasicSets.sort(function(a,b){
+    aBasicSets.sort(function (a, b) {
       return new Date(b.released_at) - new Date(a.released_at);
     });
 
@@ -57,7 +57,7 @@ class Setlist extends Component {
 
     else {
       return (
-        <Select id="Set-select" value={this.props.value? this.props.value: ""}>
+        <Select id="Set-select" value={this.props.value ? this.props.value : ""}>
           {this.state.sets.map((oSet) => {
             return (
               <MenuItem onClick={this.props.onSetClicked.bind(this, oSet.code)} value={oSet.code} key={oSet.code}>{oSet.name} ({oSet.card_count})</MenuItem>

@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 class LoadingIndicator extends Component {
 
   render() {
-      return (<div className="lds-dual-ring"></div>);
+    return (<div className="lds-dual-ring"></div>);
   }
 }
 
