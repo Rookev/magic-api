@@ -32,10 +32,17 @@ class Cardlist extends Component {
 
         // No (more) next page -> combine last fetch with all previously read cards
         else {
-          var completelyFetchedCards = previouslyFetchedCards.concat(result.data);
+          var completelyFetchedCards;
+          // Differ between single paged results and last page results
+          if (previouslyFetchedCards) {
+            completelyFetchedCards = previouslyFetchedCards.concat(result.data);
+          }
+
+          else {
+            completelyFetchedCards = result.data;
+          }
 
           // Now update state with whole card list of given set
-
           // Only consider cards with images
           var aCardsWithImageUris = completelyFetchedCards.filter(function (oCard) {
             return (oCard && oCard.image_uris && oCard.image_uris.normal)
