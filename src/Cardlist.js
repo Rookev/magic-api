@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
+import LoadingIndicator from './LoadingIndicator.js'
 import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
 
 class Cardlist extends Component {
 
@@ -67,7 +67,8 @@ class Cardlist extends Component {
     if (!this.state.cards[this.props.set]) {
       console.log("Fetch set from network: " + this.props.set);
       this.loadCards(this.props.set);
-      return <Typography variant="h4">Loading Set: {this.props.set}...</Typography>;
+      //return <Typography variant="h4">Loading Set: {this.props.set}...</Typography>;
+      return <LoadingIndicator></LoadingIndicator>;
     }
 
     // Loaded
