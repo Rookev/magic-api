@@ -57,7 +57,7 @@ class Setlist extends Component {
 
     else {
       return (
-        <Select id="Set-select">
+        <Select id="Set-select" value="">
           {this.state.sets.map((oSet) => {
             return (
               <MenuItem onClick={this.props.onSetClicked.bind(this, oSet.code)} value={oSet.code}>{oSet.name} ({oSet.card_count})</MenuItem>
