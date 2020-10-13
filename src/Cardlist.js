@@ -11,24 +11,47 @@ class Cardlist extends Component {
     };
   }
 
-  loadCards(set) {
-    fetch("https://api.scryfall.com/cards/search?order=set&q=set:" + set)
+  loadCards(set, next_page_url, previouslyFetchedCards) {
+    var sFetchURL = "";
+    if (next_page_url) {
+      sFetchURL = next_page_url;
+    }
+
+    else {
+      sFetchURL = "https://api.scryfall.com/cards/search?order=set&q=set:" + set;
+    }
+
+    fetch(sFetchURL)
       .then(res => res.json())
       .then((result) => {
-        // Only consider cards with images
-        var aCardsWithImageUris = result.data.filter(function (oCard) {
-          return (oCard && oCard.image_uris && oCard.image_uris.normal)
-        });
 
-        // Read old card buffer
-        var updatedCardBuffer = this.state.cards;
+        // Next page exists -> continue loading
+        if (result.next_page) {
+          this.loadCards(set, result.next_page, result.data);
+        }
 
-        // Update card buffer with newly fetched cards
-        updatedCardBuffer[set] = aCardsWithImageUris;
+        // No (more) next page -> combine last fetch with all previously read cards
+        else {
+          var completelyFetchedCards = previouslyFetchedCards.concat(result.data);
 
-        this.setState({
-          cards: updatedCardBuffer
-        });
+          // Now update state with whole card list of given set
+
+          // Only consider cards with images
+          var aCardsWithImageUris = completelyFetchedCards.filter(function (oCard) {
+            return (oCard && oCard.image_uris && oCard.image_uris.normal)
+          });
+
+          // Read old card buffer
+          var updatedCardBuffer = this.state.cards;
+
+          // Update card buffer with newly fetched cards
+          updatedCardBuffer[set] = aCardsWithImageUris;
+
+          // Final save of cardlist
+          this.setState({
+            cards: updatedCardBuffer
+          });
+        }
       })
   }
 
