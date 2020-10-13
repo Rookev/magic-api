@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Rookev Magic API",
+  "name": "A React app accessing the Magic The Gathering API",
   "icons": [
     {
       "src": "favicon.ico",
