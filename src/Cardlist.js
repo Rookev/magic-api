@@ -45,7 +45,7 @@ class Cardlist extends Component {
       console.log("Render set from buffer: " + this.props.set);
       return (
         <div>
-          <Grid container spacing={2}>
+          <Grid container spacing={1}>
             {this.state.cards[this.props.set].map((oCard) => (
               <Grid item xs={2}>
                 <img className="Img-card" src={oCard.image_uris.normal} alt={oCard.name} />
